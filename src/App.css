@@ -2,3 +2,8 @@ html, body {
   display: block;
   margin: 0 auto;
 }
+
+.card-text > span {
+  display: block;
+  line-height: 32px;
+}
