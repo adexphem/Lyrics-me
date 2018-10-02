@@ -22,7 +22,7 @@ class Tracks extends Component {
                 </React.Fragment>
               )
             } else {
-              return <Spinner />;
+              return <Spinner imgHeight="100px" />;
             }
           }
         }

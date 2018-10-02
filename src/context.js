@@ -10,7 +10,7 @@ export class Provider extends Component {
   }
 
   componentDidMount() {
-    axios.get(`https://cors-anywhere.herokuapp.com/${process.env.REACT_APP_MusicMatch_BaseUrl}chart.tracks.get?page=1&page_size=10&country=nga&f_has_lyrics=1&apikey=${process.env.REACT_APP_MusicMatch_Key}`)
+    axios.get(`${process.env.REACT_APP_Cors_Bypass + process.env.REACT_APP_MusicMatch_BaseUrl}chart.tracks.get?page=1&page_size=10&country=nga&f_has_lyrics=1&apikey=${process.env.REACT_APP_MusicMatch_Key}`)
       .then(result => {
         this.setState({
           trackList: result.data.message.body.track_list
