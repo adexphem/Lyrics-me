@@ -1,6 +1,6 @@
 {
   "env": {
-    "REACT_APP_MusicMatch_Key": "6f03bc7fa42ffb85c24ae32f95ed9f95",
+    "REACT_APP_MusicMatch_Key": "get yours from musixmatch",
     "REACT_APP_MusicMatch_BaseUrl": "http://api.musixmatch.com/ws/1.1/",
     "REACT_APP_Cors_Bypass": "https://cors-anywhere.herokuapp.com/"  
   }
