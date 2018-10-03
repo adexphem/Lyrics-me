@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 import { Consumer } from '../../context';
 
 class Search extends Component {
@@ -13,6 +13,19 @@ class Search extends Component {
     })
   }
 
+  getTrack = (e) => {
+    e.preventDefault();
+
+    axios.get(`${process.env.REACT_APP_Cors_Bypass + process.env.REACT_APP_MusicMatch_BaseUrl}track.search?q_track=${this.state.trackTitle}&page_size=10&apikey=${process.env.REACT_APP_MusicMatch_Key}`)
+      .then(result => {
+        console.log("result.data ", result.data);
+        // this.setState({
+        //   trackList: result.data.message.body.track_list
+        // });
+      })
+      .catch(error => console.log("Error ", error))
+  }
+
   render() {
     return (
       <Consumer>
@@ -23,7 +36,7 @@ class Search extends Component {
                 <i className="fas fa-music"></i> Song Search Arena
               </h1>
               <p className="lead text-center">Grab Song Lyrics</p>
-              <form>
+              <form onSubmit={this.getTrack}>
                 <div className="form-group">
                   <input type="text" 
                     className="form-control form-control-lg" 
