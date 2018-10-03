@@ -8,7 +8,7 @@ const reducer = (state, action) => {
     case 'SEARCH_TRACKS':
       return {
         ...state,
-        track_list: action.payload,
+        trackList: action.payload,
         heading: 'Search Result'
       }
     default:

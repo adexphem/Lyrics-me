@@ -13,15 +13,17 @@ class Search extends Component {
     })
   }
 
-  getTrack = (e) => {
+  getTrack = (dispatch, e) => {
     e.preventDefault();
 
     axios.get(`${process.env.REACT_APP_Cors_Bypass + process.env.REACT_APP_MusicMatch_BaseUrl}track.search?q_track=${this.state.trackTitle}&page_size=10&apikey=${process.env.REACT_APP_MusicMatch_Key}`)
       .then(result => {
-        console.log("result.data ", result.data);
-        // this.setState({
-        //   trackList: result.data.message.body.track_list
-        // });
+        dispatch({
+          type: 'SEARCH_TRACKS',
+          payload: result.data.message.body.track_list
+        });
+
+        this.setState({ trackTitle: ''});
       })
       .catch(error => console.log("Error ", error))
   }
@@ -30,13 +32,14 @@ class Search extends Component {
     return (
       <Consumer>
         {value => {
+          const { dispatch } = value;
            return(
              <div className="card card-body mb-4 p-4">
               <h1 className="display-4 text-center">
                 <i className="fas fa-music"></i> Song Search Arena
               </h1>
               <p className="lead text-center">Grab Song Lyrics</p>
-              <form onSubmit={this.getTrack}>
+              <form onSubmit={this.getTrack.bind(this, dispatch)}>
                 <div className="form-group">
                   <input type="text" 
                     className="form-control form-control-lg" 
